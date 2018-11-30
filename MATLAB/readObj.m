@@ -1,4 +1,4 @@
-function obj = readObj(fname)
+function vertices = readObj(fname)
 %
 % obj = readObj(fname)
 %
@@ -20,7 +20,9 @@ function obj = readObj(fname)
 %%
 % EDIT: Initialize empty matrix as a half-million x 6 matrix
 v = zeros(500000,6);
-
+%%
+% Iterator for adding to matrix:
+k = 1;
 %EDIT: Ignoring everyhting but the colored vertices:
 % set up field types
 %v = []; vt = []; vn = []; f.v = []; f.vt = []; f.vn = []; 
@@ -35,7 +37,8 @@ while 1
      %disp(ln)
     switch ln
         case 'v'   % mesh vertexs
-            v = [v; sscanf(tline(2:end),'%f')'];
+            v(k,:) = sscanf(tline(2:end),'%f')';
+            k = k + 1;
         %%
         % EDIT: ignoring everything but the vertices
         %{
@@ -68,4 +71,10 @@ end
 fclose(fid);
 
 % set up matlab object 
-obj.v = v; obj.vt = vt; obj.vn = vn; obj.f = f;
+%%
+% EDIT: ignoring everything but the vertices
+%obj.v = v; obj.vt = vt; obj.vn = vn; obj.f = f;
+
+%%
+% Remove extra zeros:
+vertices = v(any(v,2),:);
