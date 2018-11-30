@@ -39,7 +39,7 @@ newN = length(filteredV);
 if print
     numberRemoved = n - newN;
     percentRemoved = 100*numberRemoved/n;
-    sprintf('Removed %d points (%0.2f percent)',numberRemoved, percentRemoved)
+    fprintf('Removed %d points (%0.2f percent).\n',numberRemoved, percentRemoved)
 end
 %%
 % End timer:

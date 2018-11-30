@@ -24,7 +24,7 @@ colorRange_Dark = [0.05, 0.5; ... %Red   min. and max.
                    0.1,  0.3; ... %Green min. and max.
                    0.1,  0.3];    %Blue  min. and max.
 colorRange_Blue = [  0, 0.6; ... %Red   min. and max.
-                     0, 0.15; ... %Green min. and max.
+                     0, 0.125; ... %Green min. and max.
                      0.05, 1];    %Blue  min. and max.
 % Filter out points that are not in the desured color range:
 %vertices = filterColor(vertices, colorRange_Dark, timer);
@@ -39,5 +39,7 @@ ptCloud = filterNoise (ptCloud, print, timer);
 %%
 title = 'Filtered Point Cloud with noise removed';
 plotPointCloud( ptCloud, title, timer);
-
-
+%%
+% Segment the point cloud into clusters:
+minDistance = 1;
+segmentPointCloud(ptCloud,minDistance,print,timer);

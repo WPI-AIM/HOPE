@@ -13,6 +13,6 @@ newCount = ptCloud.Count;
 if print
     numberRemoved = currentCount - newCount;
     percentRemoved = 100*numberRemoved/currentCount;
-    sprintf('Removed %d points (%0.2f percent)',numberRemoved, percentRemoved)
+    fprintf('Removed %d points (%0.2f percent).\n',numberRemoved, percentRemoved)
 end
 end
