@@ -16,8 +16,8 @@ print = true; % Displays print messages
 vertices = importOBJ(file,timer);
 %% 
 %convert to point cloud and plot:
-title = 'Original Colored Point Cloud';
-ptCloud = plotVertices(vertices, plot , title, timer);
+name = 'Original Colored Point Cloud';
+ptCloud = plotVertices(vertices, plot , name, timer);
 %%
 % Set desired color range:
 colorRange_Dark = [0.05, 0.5; ... %Red   min. and max.
@@ -31,14 +31,14 @@ colorRange_Blue = [  0, 0.6; ... %Red   min. and max.
 vertices = filterColor(vertices, colorRange_Blue, print, timer);
 %% 
 %convert to point cloud and plot:
-title = 'Filtered Point Cloud';
-ptCloud = plotVertices(vertices, plot, title, timer);
+name = 'Filtered Point Cloud';
+ptCloud = plotVertices(vertices, plot, name, timer);
 %%
 % Removes noise from point cloud:
 ptCloud = filterNoise (ptCloud, print, timer);
 %%
-title = 'Filtered Point Cloud with noise removed';
-plotPointCloud( ptCloud, title, timer);
+name = 'Filtered Point Cloud With Noise Removed';
+plotPointCloud( ptCloud, name, timer);
 %%
 % Segment the point cloud into clusters:
 minDistance = 1;
