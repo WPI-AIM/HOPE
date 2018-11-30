@@ -15,3 +15,4 @@ if timer
 else 
     toc;
 end
+end

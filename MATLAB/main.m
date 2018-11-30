@@ -1,5 +1,7 @@
 %script for processing obj files
-
+%%
+% Clean up before running anything:
+clc, clear all, close all
 %%
 % Set the file name:
 file = 'sample_with_dots.obj';
@@ -14,14 +16,20 @@ plot = true;
 vertices = importOBJ(file,timer);
 %% 
 %convert to point cloud and plot:
-ptCloud = plotVertices(vertices, plot, timer);
+title = 'Original Colored Point Cloud';
+ptCloud = plotVertices(vertices, plot , title, timer);
 %%
 % Set desired color range:
-colorRange = [0.05, 0.5; ... %Red   min. and max.
-              0.1, 0.3; ... %Green min. and max.
-              0.1, 0.3];    %Blue  min. and max.
+colorRange_Dark = [0.05, 0.5; ... %Red   min. and max.
+                   0.1,  0.3; ... %Green min. and max.
+                   0.1,  0.3];    %Blue  min. and max.
+colorRange_Blue = [  0, 0.2; ... %Red   min. and max.
+                     0, 0.2; ... %Green min. and max.
+                   0.8,   1];    %Blue  min. and max.
 % Filter out points that are not in the desured color range:
-vertices = filterColor(vertices, colorRange, timer);
+%vertices = filterColor(vertices, colorRange_Dark, timer);
+vertices = filterColor(vertices, colorRange_Blue, timer);
 %% 
 %convert to point cloud and plot:
-ptCloud = plotVertices(vertices, timer);
+title = 'Filtered Point Cloud';
+ptCloud = plotVertices(vertices, plot, title, timer);
