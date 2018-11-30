@@ -42,4 +42,6 @@ plotPointCloud( ptCloud, title, timer);
 %%
 % Segment the point cloud into clusters:
 minDistance = 1;
-segmentPointCloud(ptCloud,minDistance,print,timer);
+[labels,numClusters] = segmentPointCloud(ptCloud,minDistance,print,timer);
+%%
+% Filter out clusters of point clouds that are too big or too small:
