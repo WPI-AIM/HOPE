@@ -1,7 +1,7 @@
 %% filterColor
 % This function takes in a matrix of colored vertices and a color range and
 % outputs vertices that are within the specified range.
-function [filteredV] = filterColor(vertices, colorRange, timer)
+function [filteredV] = filterColor(vertices, colorRange, print, timer)
 %%
 % Start timer:
 tic
@@ -32,6 +32,15 @@ end
 %%
 % Remove extra zeros:
 filteredV = filteredV(any(filteredV,2),:);
+%%
+% Grabs the new number of points:
+newN = length(filteredV);
+% Prints the number and percent of points filtered out:
+if print
+    numberRemoved = n - newN;
+    percentRemoved = 100*numberRemoved/n;
+    sprintf('Removed %d points (%0.2f percent)',numberRemoved, percentRemoved)
+end
 %%
 % End timer:
 if timer

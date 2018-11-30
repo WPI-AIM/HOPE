@@ -28,7 +28,7 @@ colorRange_Blue = [  0, 0.6; ... %Red   min. and max.
                      0.05, 1];    %Blue  min. and max.
 % Filter out points that are not in the desured color range:
 %vertices = filterColor(vertices, colorRange_Dark, timer);
-vertices = filterColor(vertices, colorRange_Blue, timer);
+vertices = filterColor(vertices, colorRange_Blue, print, timer);
 %% 
 %convert to point cloud and plot:
 title = 'Filtered Point Cloud';
