@@ -17,9 +17,7 @@ ptCloud = pointCloud(xyz, 'color', RGB);
 %%
 %plot the point cloud:
 if plot
-    figure('Name',title);
-    hold on;
-    pcshow(ptCloud);
+    plotPointCloud(ptCloud,title,timer);
 end
 %%
 % End timer:

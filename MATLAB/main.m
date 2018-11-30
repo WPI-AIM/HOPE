@@ -7,11 +7,10 @@ clc, clear all, close all
 %file = 'sample_with_dots.obj';
 file = 'blue dots, top, linear rgb.obj';
 %%
-% Display the time to import the .obj file (true/false):
-timer = true;
-%%
-% Display point cloud plots (true/false):
-plot = true;
+% Options for output (true/false):
+timer = true; % Display the time for a function to run
+plot = true; % Display point cloud plots
+print = true; % Displays print messages
 %%
 % Import the vertices:
 vertices = importOBJ(file,timer);
@@ -34,3 +33,11 @@ vertices = filterColor(vertices, colorRange_Blue, timer);
 %convert to point cloud and plot:
 title = 'Filtered Point Cloud';
 ptCloud = plotVertices(vertices, plot, title, timer);
+%%
+% Removes noise from point cloud:
+ptCloud = filterNoise (ptCloud, print, timer);
+%%
+title = 'Filtered Point Cloud with noise removed';
+plotPointCloud( ptCloud, title, timer);
+
+
