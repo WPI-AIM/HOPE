@@ -13,8 +13,13 @@ xyz = vertices(:,1:3);
 RGB = vertices (:,4:6);
 %%
 % Create the point cloud:
+ptCloud = pointCloud(xyz, 'color', RGB)
+%%
+%plot the point cloud:
 if plot
-    ptCloud = pointCloud(xyz, 'color', RGB)
+    title = 'Colored Point Cloud: Plot 1'
+    Figure(title);
+    pcshow(ptCloud);
 end
 %%
 % End timer:
