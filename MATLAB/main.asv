@@ -8,8 +8,6 @@ file = 'sample_with_dots.obj';
 timer = true;
 %%
 % Display point cloud plots (true/false):
-plot = true;
-%%
 % Import the vertices:
 vertices = importOBJ(file,timer);
 %% 
