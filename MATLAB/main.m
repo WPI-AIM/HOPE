@@ -4,7 +4,8 @@
 clc, clear all, close all
 %%
 % Set the file name:
-file = 'sample_with_dots.obj';
+%file = 'sample_with_dots.obj';
+file = 'blue dots, top, linear rgb.obj';
 %%
 % Display the time to import the .obj file (true/false):
 timer = true;
@@ -23,9 +24,9 @@ ptCloud = plotVertices(vertices, plot , title, timer);
 colorRange_Dark = [0.05, 0.5; ... %Red   min. and max.
                    0.1,  0.3; ... %Green min. and max.
                    0.1,  0.3];    %Blue  min. and max.
-colorRange_Blue = [  0, 0.2; ... %Red   min. and max.
-                     0, 0.2; ... %Green min. and max.
-                   0.8,   1];    %Blue  min. and max.
+colorRange_Blue = [  0, 0.6; ... %Red   min. and max.
+                     0, 0.15; ... %Green min. and max.
+                     0.05, 1];    %Blue  min. and max.
 % Filter out points that are not in the desured color range:
 %vertices = filterColor(vertices, colorRange_Dark, timer);
 vertices = filterColor(vertices, colorRange_Blue, timer);
