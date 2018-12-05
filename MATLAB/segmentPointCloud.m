@@ -1,5 +1,5 @@
 %% segmentPointCloud
-% This function takesi n a point cloud and groups the points into
+% This function takes in a point cloud and groups the points into
 % clusters that are seperated by the given minimum distance. This function
 % can also plot the clusters.
 function [labels, numClusters] = segmentPointCloud(ptCloud, minDistance, print, plot, timer)

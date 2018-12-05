@@ -45,3 +45,4 @@ minDistance = 1;
 [labels,numClusters] = segmentPointCloud(ptCloud,minDistance,print,timer);
 %%
 % Filter out clusters of point clouds that are too big or too small:
+
