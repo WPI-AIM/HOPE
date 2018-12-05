@@ -5,7 +5,8 @@ clc, clear all, close all
 %%
 % Set the file name:
 %file = 'sample_with_dots.obj';
-file = 'blue dots, top, linear rgb.obj';
+%file = 'blue dots, top, linear rgb.obj';
+%file = 'Alex, great scan, 9 blue dots, all dots showed up';
 %%
 % Options for output (true/false):
 timer = true; % Display the time for a function to run
@@ -41,8 +42,8 @@ name = 'Filtered Point Cloud With Noise Removed';
 plotPointCloud( ptCloud, name, timer);
 %%
 % Segment the point cloud into clusters:
-minDistance = 1;
-[labels,numClusters] = segmentPointCloud(ptCloud,minDistance,print,timer);
+%minDistance = 1;
+%[labels,numClusters] = segmentPointCloud(ptCloud,minDistance,print,timer);
 %%
 % Filter out clusters of point clouds that are too big or too small:
 
