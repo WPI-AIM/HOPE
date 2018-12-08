@@ -19,7 +19,7 @@ function vertices = readObj(fname)
 
 %%
 % EDIT: Initialize empty matrix as a half-million x 6 matrix
-v = zeros(500000,6);
+v = zeros(1500000,6);
 %%
 % Iterator for adding to matrix:
 k = 1;
