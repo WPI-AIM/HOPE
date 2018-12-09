@@ -40,7 +40,7 @@ vertices2 = filterColor(vertices, colorRange_Blue_low_light, print, timer);
 %%
 %convert to point cloud and plot:
 name = 'Filtered Point Cloud';
-ptCloud = plotVertices(vertices2, plot, name, timer);
+ptCloud = verticesToPointCloud(vertices2, plot, name, timer);
 %%
 % Removes noise from point cloud:
 ptCloud = filterNoise (ptCloud, print, timer);

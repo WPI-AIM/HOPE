@@ -1,7 +1,7 @@
 %% plotVertices
 % This function takes in a matrix of colored vertices and creates a point
-% cloud as well as plotting the point cloud.
-function [ptCloud] = plotVertices (vertices, plot, title, timer)
+% cloud. This function can also plot the point cloud if requested.
+function [ptCloud] = verticesToPointCloud (vertices, plot, title, timer)
 %%
 % Start timer:
 tic
