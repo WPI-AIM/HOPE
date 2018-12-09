@@ -5,9 +5,7 @@ clc, clear all, close all
 %close all
 %%
 % Set the file name:
-%file = 'sample_with_dots.obj';
-%file = 'blue dots, top, linear rgb.obj';
-file = 'Alex, great scan, 9 blue dots, all dots showed up.obj';
+file = '../Scans/Alex, great scan, 9 dots, ideal lighting, no missing dots.obj';
 %%
 % Options for output (true/false):
 timer = true; % Display the time for a function to run
@@ -19,7 +17,7 @@ vertices = importOBJ(file,timer);
 %% 
 %convert to point cloud and plot:
 name = 'Original Colored Point Cloud';
-ptCloud = plotVertices(vertices, plot , name, timer);
+ptCloud = verticesToPointCloud(vertices, plot , name, timer);
 %%
 % Set desired color range:
 colorRange_Dark = [0.05, 0.5; ... %Red   min. and max.
@@ -31,11 +29,10 @@ colorRange_Blue = [  0, 0.6; ... %Red   min. and max.
 colorRange_Blue_low_light = [  0, .3; ... %Red   min. and max.
                                0, .06; ... %Green min. and max.
                                0.025, .5];    %Blue  min. and max.
-
 % Filter out points that are not in the desured color range:
-%vertices = filterColor(vertices, colorRange_Dark, timer);
-%vertices = filterColor(vertices, colorRange_Blue, print, timer);
-vertices2 = filterColor(vertices, colorRange_Blue_low_light, print, timer);
+%vertices2 = filterColor(vertices, colorRange_Dark, timer);
+vertices2 = filterColor(vertices, colorRange_Blue, print, timer);
+%vertices2 = filterColor(vertices, colorRange_Blue_low_light, print, timer);
 
 %%
 %convert to point cloud and plot:
@@ -55,4 +52,4 @@ minDistance = 1;
 % Set the volume limitations:
 volumeLimit = [0, 10000]
 % Filter out clusters of point clouds that are too big or too small:
-
+ptCloutCell = filterPointCloudSize(ptCloud, labels, numClusters, volumeLimit, timer)
