@@ -52,5 +52,7 @@ plotPointCloud( ptCloud, name, timer);
 minDistance = 1;
 [labels,numClusters] = segmentPointCloud(ptCloud,minDistance,print,timer);
 %%
+% Set the volume limitations:
+volumeLimit = [0, 10000]
 % Filter out clusters of point clouds that are too big or too small:
 

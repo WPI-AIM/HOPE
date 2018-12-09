@@ -2,7 +2,7 @@
 % This function takes in a point cloud and a list of labels and filters out
 % the clusters that are too big or too small this function returns a point
 % cloud, a list of labels, and the number of clusters.
-function [labels, newPtCloud, numClusters, boxedVolume] = filterPointCloudSize(ptCloud, labels, numClusters, volumeLimit, time)
+function [labels, PtCloudCell, numClusters, boxedVolume, centroids] = filterPointCloudSize(ptCloud, labels, numClusters, volumeLimit, time)
 %%
 % Start timer:
 tic
@@ -10,6 +10,9 @@ tic
 % Initialize the matrix of cluster volumes and centroids:
 boxedVolume = zeros(numClusters, 1);
 centroids = zeros(numClusters, 1);
+%%
+% Initialize cell matrix to hold point clouds:
+PtCloudCell = cell()
 %%
 % Iterates through each cluster:
 for i = 1:numClusters
