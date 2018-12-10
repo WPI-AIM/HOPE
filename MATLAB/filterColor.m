@@ -4,7 +4,9 @@
 function [filteredV] = filterColor(vertices, colorRange, print, timer)
 %%
 % Start timer:
-tic
+if timer
+    tic
+end
 %%
 % Grab the number of points:
 n = length(vertices);
@@ -45,7 +47,4 @@ end
 % End timer:
 if timer
     toc
-else 
-    toc;
-end
 end

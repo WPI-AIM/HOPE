@@ -4,7 +4,9 @@
 function [vertices] = importOBJ(file_name, timer)
 %%
 % Start timer:
-tic
+if timer
+    tic
+end
 %%
 % Read in .obj data:
 vertices = readObj(file_name);
@@ -12,7 +14,5 @@ vertices = readObj(file_name);
 % End timer:
 if timer
     toc
-else 
-    toc;
 end
 end

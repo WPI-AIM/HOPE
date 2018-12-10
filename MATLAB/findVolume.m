@@ -3,9 +3,11 @@
 % coordinate box that contains the points that belong to the specified
 % cluster.
 function [volume] = findVolume(ptCloud, timer)
-%%%
+%%
 % Start timer:
-tic
+if timer
+    tic
+end
 %%
 % Extract the box dimensions of the point cloud:
 x = ptCloud.XLimits(1,2) - ptCloud.XLimits(1,1);
@@ -18,7 +20,5 @@ volume = x*y*z;
 % End timer:
 if timer
     toc
-else 
-    toc;
 end
 end

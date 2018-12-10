@@ -5,7 +5,9 @@
 function [ptCloudCluster] = seperatePointCloud (ptCloud, labels, clusterNumber, timer)
 %%
 % Start timer:
-tic
+if timer
+    tic
+end
 %%
 % Grab the current number of points:
 numberPoints = ptCloud.Count;
@@ -38,7 +40,5 @@ ptCloudCluster = verticesToPointCloud(vertices, false, '', timer);
 % End timer:
 if timer
     toc
-else 
-    toc;
 end
 end

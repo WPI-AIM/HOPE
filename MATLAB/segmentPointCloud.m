@@ -4,6 +4,11 @@
 % can also plot the clusters.
 function [labels, numClusters] = segmentPointCloud(ptCloud, minDistance, print, plot, timer)
 %%
+% Start timer:
+if timer
+    tic
+end
+%%
 % Segment the point cloud data:
 [labels,numClusters] = pcsegdist(ptCloud,minDistance);
 %%
@@ -21,5 +26,9 @@ if plot
     colormap(hsv(numClusters));
     title(name);
 end
-
+%%
+% End timer:
+if timer
+    toc
+end
 end

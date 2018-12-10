@@ -6,7 +6,9 @@
 function [ptCloudCell] = filterPointCloudSize(ptCloud, labels, numClusters, volumeLimit, timer)
 %%
 % Start timer:
-tic
+if timer
+    tic
+end
 %%
 % Initialize the matrix of cluster volumes and centroids:
 boxedVolume = zeros(numClusters, 1);
@@ -52,7 +54,5 @@ end
 % End timer:
 if timer
     toc
-else 
-    toc;
 end
 end

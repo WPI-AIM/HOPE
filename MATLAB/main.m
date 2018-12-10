@@ -8,7 +8,7 @@ close all
 file = '../Scans/Alex, great scan, 9 dots, ideal lighting, no missing dots.obj';
 %%
 % Options for output (true/false):
-timer = true; % Display the time for a function to run
+timer = false; % Display the time for a function to run
 plot = false; % Display point cloud plots
 print = true; % Displays print messages
 %%
