@@ -6,7 +6,7 @@ function [labels, numClusters] = segmentPointCloud(ptCloud, minDistance, print, 
 %%
 % Start timer:
 if timer
-    tic
+    tic;
 end
 %%
 % Segment the point cloud data:
@@ -29,6 +29,6 @@ end
 %%
 % End timer:
 if timer
-    toc
+    toc;
 end
 end

@@ -2,7 +2,7 @@ function [ptCloud] = filterNoise(ptCloud, print, timer)
 %%
 % Start timer:
 if timer
-    tic
+    tic;
 end
 %%
 % Grabs current point cloud count:
@@ -23,6 +23,6 @@ end
 %%
 % End timer:
 if timer
-    toc
+    toc;
 end
 end

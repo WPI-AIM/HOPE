@@ -5,7 +5,7 @@ function [ptCloud] = verticesToPointCloud (vertices, plot, title, timer)
 %%
 % Start timer:
 if timer
-    tic
+    tic;
 end
 %%
 % Extract the location points:
@@ -24,6 +24,6 @@ end
 %%
 % End timer:
 if timer
-    toc
+    toc;
 end
 end

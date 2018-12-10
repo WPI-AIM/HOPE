@@ -4,7 +4,7 @@ function plotPointCloud(ptCloud, name, timer)
 %%
 % Start timer:
 if timer
-    tic
+    tic;
 end
 %%
 % Create figure:
@@ -17,6 +17,6 @@ title(name);
 %%
 % End timer:
 if timer
-    toc
+    toc;
 end
 end

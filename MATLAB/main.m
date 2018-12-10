@@ -39,9 +39,8 @@ vertices2 = filterColor(vertices, colorRange_Blue, print, timer);
 name = 'Filtered Point Cloud';
 ptCloud = verticesToPointCloud(vertices2, plot, name, timer);
 %%
-% Removes noise from point cloud:
+% Removes noise from point cloud and plot:
 ptCloud = filterNoise (ptCloud, print, timer);
-%%
 name = 'Filtered Point Cloud With Noise Removed';
 plotPointCloud( ptCloud, name, timer);
 %%
@@ -52,5 +51,8 @@ minDistance = 1;
 % Set the volume limitations (in cubic milimeters):
 volumeLimit = [100, 100000];
 % Filter out clusters of point clouds that are too big or too small:
-ptCloutCell = filterPointCloudSize(ptCloud, labels, numClusters, volumeLimit, timer)
-
+ptCloudCell = filterPointCloudSize(ptCloud, labels, numClusters, volumeLimit, timer);
+%%
+% Plot the clusters in different colors
+name = 'Clustered Point Clouds';
+plotClusters(ptCloudCell, name, plot, timer);

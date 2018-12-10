@@ -6,7 +6,7 @@ function [volume] = findVolume(ptCloud, timer)
 %%
 % Start timer:
 if timer
-    tic
+    tic;
 end
 %%
 % Extract the box dimensions of the point cloud:
@@ -19,6 +19,6 @@ volume = x*y*z;
 %%
 % End timer:
 if timer
-    toc
+    toc;
 end
 end

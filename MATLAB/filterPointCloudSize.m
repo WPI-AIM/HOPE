@@ -7,7 +7,7 @@ function [ptCloudCell] = filterPointCloudSize(ptCloud, labels, numClusters, volu
 %%
 % Start timer:
 if timer
-    tic
+    tic;
 end
 %%
 % Initialize the matrix of cluster volumes and centroids:
@@ -53,6 +53,6 @@ end
 %%
 % End timer:
 if timer
-    toc
+    toc;
 end
 end

@@ -5,7 +5,7 @@ function [centroid] = findCentroid(ptCloud, timer)
 %%
 % Start timer:
 if timer
-    tic
+    tic;
 end
 %% 
 % Initialize the centroid variable:
@@ -21,5 +21,6 @@ end
 %%
 % End timer:
 if timer
-    toc
+    toc;
+end
 end
