@@ -2,7 +2,7 @@
 % This function takes in a point cloud, a list of labels, and a desired
 % cluster number and returns a smaller point cloud with just the colored
 % points in the requested point cloud.
-function [ptCloudCluster] = seperatePointCloud (ptCloud, Labels, clusterNumber, timer)
+function [ptCloudCluster] = seperatePointCloud (ptCloud, labels, clusterNumber, timer)
 %%
 % Start timer:
 tic
@@ -22,7 +22,7 @@ for i = 1:numberPoints
     if labels(i,1) == clusterNumber
         %%
         % Add the points to vertices matrix:
-        vertices(k,:) = [ptCloud.Location(i,:), ptCloud.Color(i,:)]
+        vertices(k,:) = [ptCloud.Location(i,:), ptCloud.Color(i,:)];
         %%
         % Incriment the iterator:
         k = k + 1;
@@ -33,7 +33,7 @@ end
 vertices = vertices(any(vertices,2),:);
 %%
 % Create a new point cloud from the data in the new point cloud matricies:
-ptCloudCluster = verticesToPointCloud(vertices, false, '', false);      
+ptCloudCluster = verticesToPointCloud(vertices, false, '', timer);      
 %%
 % End timer:
 if timer

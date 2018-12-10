@@ -1,19 +1,19 @@
 %script for processing obj files
 %%
 % Clean up before running anything:
-clc, clear all, close all
-%close all
+%clc, clear all, close all
+close all
 %%
 % Set the file name:
 file = '../Scans/Alex, great scan, 9 dots, ideal lighting, no missing dots.obj';
 %%
 % Options for output (true/false):
 timer = true; % Display the time for a function to run
-plot = true; % Display point cloud plots
+plot = false; % Display point cloud plots
 print = true; % Displays print messages
 %%
 % Import the vertices:
-vertices = importOBJ(file,timer);
+%vertices = importOBJ(file,timer);
 %% 
 %convert to point cloud and plot:
 name = 'Original Colored Point Cloud';
@@ -49,7 +49,8 @@ plotPointCloud( ptCloud, name, timer);
 minDistance = 1;
 [labels,numClusters] = segmentPointCloud(ptCloud,minDistance,print,timer);
 %%
-% Set the volume limitations:
-volumeLimit = [0, 10000]
+% Set the volume limitations (in cubic milimeters):
+volumeLimit = [100, 100000];
 % Filter out clusters of point clouds that are too big or too small:
 ptCloutCell = filterPointCloudSize(ptCloud, labels, numClusters, volumeLimit, timer)
+

@@ -3,18 +3,22 @@
 % the clusters that are too big or too small this function returns a cell
 % array of size Nx4. N is the number of clusters remaining and the each row
 % is of the form:  {point cloud}, {label}, {boxed volume}, {centroid}
-function [PtCloudCell] = filterPointCloudSize(ptCloud, labels, numClusters, volumeLimit, timer)
+function [ptCloudCell] = filterPointCloudSize(ptCloud, labels, numClusters, volumeLimit, timer)
 %%
 % Start timer:
 tic
 %%
 % Initialize the matrix of cluster volumes and centroids:
 boxedVolume = zeros(numClusters, 1);
-centroids = zeros(numClusters, 1);
+centroids = zeros(numClusters, 6);
 %%
-% Initialize cell matrix to hold point clouds:
+% Initialize cell array to hold point clouds:
 % Note: each row is of the form: {point cloud}, {label}, {boxed volume}, {centroid}
-PtCloudCell = cell(0,4);
+ptCloudCell = cell(0,4);
+%%
+% Initialize an iterator for filling in the cell array to hold the point
+% clouds:
+k = 1;
 %%
 % Iterates through each cluster:
 for i = 1:numClusters
@@ -29,24 +33,19 @@ for i = 1:numClusters
     boxedVolume(i,1) = findVolume(cluster, timer);
     %%
     % Find the centroid of the individual cluster:
-    centroids(i,1) = findCentroid(cluster, timer);
+    centroids(i,:) = findCentroid(cluster, timer);
     %%
     % Check to see if the volume of the cluster is within the limits:
-    if boxedVolume > volumeLimit(1,1) && boxedVolume < volumeLimit(1,2)
+    notTooSmall = boxedVolume(i,1) >= volumeLimit(1,1);
+    notTooBig = boxedVolume(i,1) <= volumeLimit(1,2);
+    if notTooSmall && notTooBig
         %%
         % Stores the cluster in a cell array:
         cellCluster = {cluster, clusterNumber, boxedVolume, centroids};
         %%
-        % Check if the matrix of clusters is empty:
-        if isempty(ptCloudCell)
-            %%
-            % Set the matrix of clusters equal to the first cell array:
-            ptCloudCell = cellCLuster;
-        else
-            %%
-            % Append the matrix of clusters:
-            ptCloudCell = {ptCloudCell; cellCluster};
-        end
+        % Append the cell array of clusters:
+        ptCloudCell(k,:) = cellCluster;
+        k = k + 1;
     end    
 end
 %%
