@@ -47,7 +47,7 @@ plotPointCloud( ptCloud, name, timer);
 %%
 % Segment the point cloud into clusters:
 minDistance = 1;
-[labels,numClusters] = segmentPointCloud(ptCloud,minDistance,print,timer);
+[labels,numClusters] = segmentPointCloud(ptCloud, minDistance, print, plot, timer);
 %%
 % Set the volume limitations (in cubic milimeters):
 volumeLimit = [100, 100000];

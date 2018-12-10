@@ -43,7 +43,7 @@ for i = 1:numClusters
     if notTooSmall && notTooBig
         %%
         % Stores the cluster in a cell array:
-        cellCluster = {cluster, clusterNumber, boxedVolume, centroids};
+        cellCluster = {cluster, clusterNumber, boxedVolume(i,:), centroids(i,:)};
         %%
         % Append the cell array of clusters:
         ptCloudCell(k,:) = cellCluster;
