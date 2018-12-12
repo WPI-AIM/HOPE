@@ -61,4 +61,10 @@ ptCloudCell = filterPointCloudSize(ptCloud, labels, numClusters, volumeLimit, ti
 %%
 % Plot the clusters in different colors
 name = 'Clustered Point Clouds';
-plotClusters(ptCloudCell, name, plot, timer);
+colored = 'jet';
+diagram = false;
+plotClusters(ptCloudCell, name, colored, diagram, plot, timer);
+%%
+% Have the user order the point clouds:
+%plot = true;
+%orderedPtCloudCell = userOrderClusters(ptCloudCell, plot, timer);
