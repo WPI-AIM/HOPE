@@ -24,7 +24,8 @@ for i = 1:numberPoints
     if labels(i,1) == clusterNumber
         %%
         % Add the points to vertices matrix:
-        vertices(k,:) = [ptCloud.Location(i,:), ptCloud.Color(i,:)];
+        vertices(k,1:3) = ptCloud.Location(i,:);
+        vertices(k,4:6) = ptCloud.Color(i,:)/255;
         %%
         % Incriment the iterator:
         k = k + 1;
@@ -35,7 +36,7 @@ end
 vertices = vertices(any(vertices,2),:);
 %%
 % Create a new point cloud from the data in the new point cloud matricies:
-ptCloudCluster = verticesToPointCloud(vertices, false, '', timer);      
+ptCloudCluster = verticesToPointCloud(vertices, false, '', timer);   
 %%
 % End timer:
 if timer

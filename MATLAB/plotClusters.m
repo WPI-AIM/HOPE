@@ -12,24 +12,32 @@ end
 numClouds = size(ptCloudCell,1);
 %%
 %Change the color data to a new value
-color = colormap(jet(numClouds));
+color = uint8(255*colormap(jet(numClouds)));
 %%
-% Create figure:
-figure('Name',name);
-hold on;
-%%
-% Set title:
-title(name);
-%%
-% Iterate through all the point clouds, plotting them in different colors:
-for i = 1:numClouds
+% Plot the clusters:
+if plot
     %%
-    % Grab the point cloud cluster from the cell array:
-    cluster = ptCloudCell{i,1};
-
+    % Set title:
+    title(name);
     %%
-    % Plot point cloud:
-    pcshow(cluster);
+    % Create figure:
+    figure('Name',name);
+    hold on;
+    %%
+    % Iterate through all the point clouds, plotting them in different colors:
+    for i = 1:numClouds
+        %%
+        % Grab the point cloud cluster from the cell array:
+        cluster = ptCloudCell{i,1};
+        %%
+        % Change the color of the point cloud:
+        for k = 1:cluster.Count
+            cluster.Color(k,:) = color(i,:);
+        end
+        %%
+        % Plot point cloud:
+        pcshow(cluster);
+    end
 end
 %%
 % End timer:

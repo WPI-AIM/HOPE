@@ -12,7 +12,7 @@ end
 xyz = vertices(:,1:3);
 %%
 % Extract the color points:
-RGB = vertices (:,4:6);
+RGB = vertices(:,4:6);
 %%
 % Create the point cloud:
 ptCloud = pointCloud(xyz, 'color', RGB);
