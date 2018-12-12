@@ -1,8 +1,7 @@
 %script for processing obj files
 %%
 % Clean up before running anything:
-%clc, clear all, close all
-close all
+clc, clear all, close all
 %%
 % Set the file name:
 file = '../Scans/Alex, great scan, 9 dots, ideal lighting, no missing dots.obj';
@@ -13,7 +12,7 @@ plot = false; % Display progress point cloud plots
 print = false; % Displays print messages
 %%
 % Import the vertices:
-%vertices = importOBJ(file,timer);
+vertices = importOBJ(file,timer);
 %% 
 %convert to point cloud and plot:
 name = 'Original Colored Point Cloud';
@@ -68,5 +67,5 @@ diagram = false;
 orderedPtCloudCell = userOrderClusters(ptCloudCell, original, true, timer);
 %%
 % Return the centroid locations of the markers:
-centroids = extractCentroids(orderedPtCloudCell, print, timer)
+centroids = extractCentroids(orderedPtCloudCell, print, timer);
 
