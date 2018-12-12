@@ -39,7 +39,7 @@ for i = 1:numClouds
    id = str2num(id{1,1});
    %%
    % Check if the dot is actually a marker (number 1-9):
-   if id <= 1 && id >= 9
+   if id >= 1 && id <= 9
        %%
        % Save the clusters in the order based on the user input:
        orderedPtCloudCell(id,:) = ptCloudCell(i,:);

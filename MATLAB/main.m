@@ -62,11 +62,11 @@ ptCloudCell = filterPointCloudSize(ptCloud, labels, numClusters, volumeLimit, ti
 name = 'Clustered Point Clouds';
 colored = 'jet';
 diagram = false;
-plotClusters(ptCloudCell, name, colored, original, diagram, plot, timer);
+%plotClusters(ptCloudCell, name, colored, original, diagram, plot, timer);
 %%
 % Have the user order the point clouds:
 orderedPtCloudCell = userOrderClusters(ptCloudCell, original, true, timer);
 %%
 % Return the centroid locations of the markers:
-%centroids = extractCentroids(orderedPtCloudCell, print, timer);
+centroids = extractCentroids(orderedPtCloudCell, print, timer)
 
