@@ -1,8 +1,8 @@
 %% userOrderClusters
-% This function takes in a cell array and prompts the user to order them
-% based on a provided diagram, then returns the ordered centroids of the
-% clusters.
-function [orderedCentroidList] = userOrderClusters(ptCloudCell, plot, timer)
+% This function takes in a cell array and the original hand scan and
+% prompts the user to order the dots based on a provided diagram, then
+% returns the ordered centroids of the markers.
+function [orderedPtCloudCell] = userOrderClusters(ptCloudCell, original, plot, timer)
 %%
 % Start timer:
 if timer
@@ -12,9 +12,9 @@ end
 % Grab the number of point clouds in the cell array:
 numClouds = size(ptCloudCell,1);
 %%
-% Initialize the ordered cell array:
+% Initialize the ordered cell array assuming nine markers:
 % Note: each row is of the form: {point cloud}, {label}, {boxed volume}, {centroid}
-orderedPtCloudCell = cell(0,4);
+orderedPtCloudCell = cell(9,4);
 %%
 % Itererate through each cluster, requesting the user to identify the
 % cluster as a dot (numbered 1-9) or as an extraneous feature (number 0):
@@ -24,7 +24,7 @@ for i = 1:numClouds
    name = sprintf('Detected Markers (%d/%d)',i,numClouds);
    colored = i;
    diagram = true;
-   plotClusters(ptCloudCell, name, colored, diagram, plot, timer);
+   plotClusters(ptCloudCell, name, colored, original, diagram, plot, timer);
    %%
    % Prompt the user to enter the identification number based on the
    % diagram:
@@ -37,8 +37,16 @@ for i = 1:numClouds
    %%
    % Convert answer from the dialog into a number:
    id = str2num(id{1,1});
-   
-  
+   %%
+   % Check if the dot is actually a marker (number 1-9):
+   if id <= 1 && id >= 9
+       %%
+       % Save the clusters in the order based on the user input:
+       orderedPtCloudCell(id,:) = ptCloudCell(i,:);
+   end
+   %%
+   % Close the current figure:
+   close
 end
 %%
 % End timer:

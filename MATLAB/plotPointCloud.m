@@ -14,6 +14,7 @@ hold on;
 % Plot point cloud:
 pcshow(ptCloud);
 title(name);
+
 %%
 % End timer:
 if timer

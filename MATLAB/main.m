@@ -9,8 +9,8 @@ file = '../Scans/Alex, great scan, 9 dots, ideal lighting, no missing dots.obj';
 %%
 % Options for output (true/false):
 timer = false; % Display the time for a function to run
-plot = true; % Display point cloud plots
-print = true; % Displays print messages
+plot = false; % Display progress point cloud plots
+print = false; % Displays print messages
 %%
 % Import the vertices:
 %vertices = importOBJ(file,timer);
@@ -18,6 +18,9 @@ print = true; % Displays print messages
 %convert to point cloud and plot:
 name = 'Original Colored Point Cloud';
 ptCloud = verticesToPointCloud(vertices, plot , name, timer);
+%%
+% Saves the un-modified point cloud for later:
+original = ptCloud;
 %%
 % Set desired color range:
 colorRange_Dark = [0.05, 0.5; ... %Red   min. and max.
@@ -38,17 +41,13 @@ colorRange_HSV_blue = [1/2, 5/6; ... %Hue   min. and max.
 % Filter out points that are not in the desured color range:
 %vertices2 = filterColorRGB(vertices, colorRange_Blue_good_light, print, timer);
 vertices2 = filterColorHSV(vertices, colorRange_HSV_blue, print, timer);
-
 %%
-%convert to point cloud and plot:
+%convert vertices to a point cloud:
 name = 'Filtered Point Cloud';
 ptCloud = verticesToPointCloud(vertices2, plot, name, timer);
-
 %%
-% Removes noise from point cloud and plot:
-ptCloud = filterNoise (ptCloud, print, timer);
-%name = 'Filtered Point Cloud With Noise Removed';
-%plotPointCloud( ptCloud, name, timer);
+% Removes noise from the point cloud:
+ptCloud = filterNoise(ptCloud, print, plot, timer);
 %%
 % Segment the point cloud into clusters:
 minDistance = 1;
@@ -63,8 +62,11 @@ ptCloudCell = filterPointCloudSize(ptCloud, labels, numClusters, volumeLimit, ti
 name = 'Clustered Point Clouds';
 colored = 'jet';
 diagram = false;
-plotClusters(ptCloudCell, name, colored, diagram, plot, timer);
+plotClusters(ptCloudCell, name, colored, original, diagram, plot, timer);
 %%
 % Have the user order the point clouds:
-%plot = true;
-%orderedPtCloudCell = userOrderClusters(ptCloudCell, plot, timer);
+orderedPtCloudCell = userOrderClusters(ptCloudCell, original, true, timer);
+%%
+% Return the centroid locations of the markers:
+%centroids = extractCentroids(orderedPtCloudCell, print, timer);
+

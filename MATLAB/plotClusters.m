@@ -2,7 +2,7 @@
 % This Function takes in a cell array of point clouds and plots them all on
 % the same graph in the specified colors. There is the option to plot the
 % hand label diagram as well. 
-function plotClusters (ptCloudCell, name, colored, diagram, plot, timer)
+function plotClusters (ptCloudCell, name, colored, original, diagram, plot, timer)
 %%
 % Start timer:
 if timer
@@ -22,6 +22,8 @@ else
     % Change the color data to all black except the desired cluster that
     % will be plotted in blue:
     color = zeros(numClouds,3);
+    %%
+    % The blue cluster will be the input number:
     color(colored,3) = 255;
 end
 %%
@@ -33,7 +35,7 @@ if plot
         %%
         % Create the figure with a specific orientation:
         figure('Name',name, ...
-               'Position', [10, 222, 1280, 768]);
+               'Position', [10, 10, 1600, 800]);
     else
         %%
         % Otherwise just create the figure with the default orientation:
@@ -47,11 +49,6 @@ if plot
     % Iterate through all the point clouds, plotting them in different colors:
     for i = 1:numClouds
         %%
-        % Sets the plotting location:
-        %if diagram
-        %    subplot(1,2,1);
-        %end
-                %%
         % Grab the point cloud cluster from the cell array:
         cluster = ptCloudCell{i,1};
         %%
@@ -67,17 +64,24 @@ if plot
     % converts the current plot to a subplot of the diagram is being
     % displayed as well:
     if diagram
-        subplot(1,2,1,gca);
+        subplot(1,3,1,gca);
     end
     %%
-    % Plots the hand label diagram if desired:
+    % Plots the hand label diagram and the original point cloud if desired:
     if diagram
         %%
         % Set the file name for the diagram:
         diagramName = '../Diagrams/Hand Labels.png';
-        subplot(1,2,2);
+        %% 
+        % Plot the diagram:
+        subplot(1,3,2);
         imshow(diagramName);
         title('Diagram of Marker Locations');
+        %%
+        % Plot the original point cloud:
+        subplot(1,3,3);
+        pcshow(original);
+        title('Original Hand Scan');
     end
 end
 %%
