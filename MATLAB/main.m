@@ -32,18 +32,18 @@ colorRange_Blue_low_light = [  0, .3; ... %Red   min. and max.
 colorRange_Blue_good_light = [  0, 0.14; ... %Red   min. and max.
                                 0, 0.1; ... %Green min. and max.
                              0.08, 1];    %Blue  min. and max.
-
+colorRange_HSV_blue = [0, 1; ... %Hue   min. and max.
+                       0, 1; ... %Saturation min. and max.
+                       0, 1];    %Value  min. and max.
 % Filter out points that are not in the desured color range:
-%vertices2 = filterColor(vertices, colorRange_Dark, timer);
-%vertices2 = filterColor(vertices, colorRange_Blue, print, timer);
-%vertices2 = filterColor(vertices, colorRange_Blue_low_light, print, timer);
-vertices2 = filterColor(vertices, colorRange_Blue_good_light, print, timer);
+%vertices2 = filterColorRGB(vertices, colorRange_Blue_good_light, print, timer);
+vertices2 = filterColorHSV(vertices, colorRange_HSV_blue, print, timer);
 
 %%
 %convert to point cloud and plot:
 name = 'Filtered Point Cloud';
 ptCloud = verticesToPointCloud(vertices2, plot, name, timer);
-
+%{
 %%
 % Removes noise from point cloud and plot:
 ptCloud = filterNoise (ptCloud, print, timer);
@@ -62,3 +62,4 @@ ptCloudCell = filterPointCloudSize(ptCloud, labels, numClusters, volumeLimit, ti
 % Plot the clusters in different colors
 name = 'Clustered Point Clouds';
 plotClusters(ptCloudCell, name, plot, timer);
+%}
