@@ -1,7 +1,7 @@
 %% findVolume
 % This function takes in a point cloud and finds the volume of the
 % coordinate box that contains the points that belong to the specified
-% cluster. input units are milimeters, output units are cubic milimeters.
+% cluster. input units are millimeters, output units are cubic millimeters.
 function [volume] = findVolume(ptCloud, timer)
 %%
 % Start timer:

@@ -48,7 +48,8 @@ ptCloud = verticesToPointCloud(vertices2, plot, name, timer);
 % Removes noise from the point cloud:
 ptCloud = filterNoise(ptCloud, print, plot, timer);
 %%
-% Segment the point cloud into clusters:
+% Segment the point cloud into clusters seperated by a minimum distance
+% (millimeters):
 minDistance = 1;
 [labels,numClusters] = segmentPointCloud(ptCloud, minDistance, print, plot, timer);
 %%
