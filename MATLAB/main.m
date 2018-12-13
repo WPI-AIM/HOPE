@@ -1,3 +1,5 @@
+% Update main file 12/13/2018
+
 %script for processing obj files
 %%
 % Clean up before running anything:
@@ -69,4 +71,8 @@ orderedPtCloudCell = userOrderClusters(ptCloudCell, original, true, timer);
 %%
 % Return the centroid locations of the markers:
 centroids = extractCentroids(orderedPtCloudCell, print, timer);
+
+[FingerMeasurements, ThumbMeasurements, PalmMeasurements] = pointstoparameters(centroids)
+
+HandKinematics()
 
