@@ -9,7 +9,7 @@ point6 = points(16:18);
 point7 = points(19:21);
 point8 = points(22:24);
 point9 = points(25:27);
-point10 = points(28:30);
+
 
 %% Five parameters for CAD parts
 
@@ -54,8 +54,8 @@ PalmMeasurements = [M_palm, R_palm, P_palm, knuckleI_M, knuckleM_R, knuckleR_P, 
 
 T1 = ThumbLength* 0.4512195122; %Male Ratio
 T2 = ThumbLength* 0.3902439024; %Male Ratio
-T3 = norm(point7)-norm(point8); %Male Ratio 
-T2 = HandLength* 0.180952381; %Male Ratio
+T3 = norm(point7-point8); %Male Ratio 
+T4 = HandLength* 0.180952381; %Male Ratio
 T5 = HandLength* 0.1770833334; %Male Ratio
 
 ThumbMeasurements = [T1, T2, T3, T4, T5];
