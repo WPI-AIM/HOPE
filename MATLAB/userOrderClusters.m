@@ -33,7 +33,8 @@ for i = 1:numClouds
    title = 'ID Each Marker';
    dimensions = [1, 60];
    defaultInput = {'0'};
-   id = inputdlg(prompt, title, dimensions, defaultInput);
+   options.WindowStyle = 'normal';
+   id = inputdlg(prompt, title, dimensions, defaultInput, options);
    %%
    % Convert answer from the dialog into a number:
    id = str2num(id{1,1});
