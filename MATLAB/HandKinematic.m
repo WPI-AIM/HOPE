@@ -5,7 +5,7 @@
 % palm measurements to derivate all the requierements dimensions and
 % generate the hand model.
 
-% Last review version 12/12/2018 11:10pm
+% Last review version 12/13/2018 9:20pm
 
 function [] = HandKinematic(FingerMeasurements,ThumbMeasurements,PalmMeasurements)
 
@@ -14,6 +14,14 @@ function [] = HandKinematic(FingerMeasurements,ThumbMeasurements,PalmMeasurement
 % close all
 % clear
 % clc
+
+
+% figure(1)
+% img = imread('alexhand1.jpg');
+% img = imshow(img);
+% hold on
+% grid on
+% alpha(.5)
 
 %% KINEMATICS OF THE THUMB
 th1 = ThumbMeasurements(1);
@@ -93,7 +101,7 @@ T_pinky5 = Tfp01*Tfp12*Tfp23*Tfp34*Tfp45;
 R_dip = FingerMeasurements(4);
 R_pip = FingerMeasurements(5);
 R_mcp = FingerMeasurements(6);
-theta_r = [90,0,90,90,90]';
+theta_r = [90,0,0,0,0]';
 alpha_r = [0,90,0,0,0]';
 a_r = [R_palm,0,R_mcp,R_pip,R_dip]';
 d_r = [0,0,0,0,0]';
@@ -120,7 +128,7 @@ M_dip = FingerMeasurements(7);
 M_pip = FingerMeasurements(8);
 M_mcp = FingerMeasurements(9);
 
-theta_m = [90,0,90,0,0]';
+theta_m = [90,0,0,0,0]';
 alpha_m = [0,90,0,0,0]';
 a_m = [M_palm,0,M_mcp,M_pip,M_dip]';
 d_m = [0,0,0,0,0]';

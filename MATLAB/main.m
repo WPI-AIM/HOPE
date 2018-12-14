@@ -74,6 +74,5 @@ centroids = extractCentroids(orderedPtCloudCell, print, timer);
 
 [FingerMeasurements, ThumbMeasurements, PalmMeasurements] = pointstoparameters(centroids)
 
-%HandKinematics()
-%HandKinematic(FingerMeasurements, ThumbMeasurements, PalmMeasurements)
+HandKinematics()
 
